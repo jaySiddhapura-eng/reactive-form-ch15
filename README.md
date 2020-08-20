@@ -1,27 +1,178 @@
-# MyFirstApp
+# Reactive Forms
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.0.
+## Introduction
 
-## Development server
+1. In template drive n approach of form implementation, we first created the form template and then we connect that template to the typescript object and code
+2. In Reactive form implementation we first create form object in typescript and then we uses this form to create template in HTML 
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Setup
 
-## Code scaffolding
+1. Import the ```FormGroup``` in the ```app.component.ts```
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+   ~~~typescript
+   // app.component.ts
+   import {FormGroup} from '@angular/forms';
+   export class AppComponent {
+       signupForm: FormGroup;
+   }
+   ~~~
 
-## Build
+2. Register form group in ```app.module.ts```
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+   ~~~typescript
+   @NgModule({ 
+   	  imports: [ ReactiveFormsModule ]
+   })
+   ~~~
 
-## Running unit tests
+## Adding Form Control
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+~~~typescript
+//app.component.ts
 
-## Running end-to-end tests
+export class AppComponent {
+    signupForm: FormGroup;
+    
+    ngOnInit(){
+        this.signupForm = new FormGroup({ 
+            'username':new FormControl(null),	// default value = null
+            'email' : new FormControl(null),	
+            'gender' : new FormControl('male')	// default value = 'male'
+        })
+	}
+}
+~~~
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+## Connecting above created FormControl to the HTML template
 
-## Further help
+~~~html
+<form [formGroup]="signupForm">
+    
+    <div class="form-group">
+    	<label for="username">Username</label>
+    	<input type="text"
+               id="username"
+               formControlName="username"
+               class="form-control">
+    </div>
+    
+    <div class="form-group">
+         <label for="email">email</label>
+         <input type="text"
+                id="email"
+                formControlName="email"
+                class="form-control">
+    </div>
+    
+    
+    <div class="radio" *ngFor="let gender of genders">
+          <label>
+          <input type="radio"
+                 formControlName="gender"
+                 [value]="gender">{{ gender }}
+          </label>
+   </div>
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+</form>
+~~~
+
+## Submit the form
+
+1. Technically form is already submitted and .ts has all the form control inputs already
+
+   ~~~html
+   <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+   </form>
+   ~~~
+
+   ~~~typescript
+   export class AppComponent {
+      signupForm: FormGroup;
+      onSubmit(){
+       console.log(this.signupForm);
+       this.signupForm.reset();
+   	} 
+   }  
+   ~~~
+
+## Validating the input Data
+
+1. FormControl support some default validators
+
+2. You can apply one validator or multiple validator to the individual formControls
+
+   ~~~typescript
+   //app.component.ts
+   
+   export class AppComponent {
+       signupForm: FormGroup;
+       
+       ngOnInit(){
+           this.signupForm = new FormGroup({ 
+               // one validator
+               'username':new FormControl(null,Validators.required),	
+               // multi validator	
+               'email' : new FormControl(null,[Validators.required, Validators.email]), 
+               'gender' : new FormControl('male')	
+           })
+   	}
+   }
+   ~~~
+
+## Getting access to controls
+
+~~~html
+<div class="form-group">
+     <label for="username">Username</label>
+     <input ...>
+    
+    <!--access in individual form control-->
+	<span *ngIf="!signupForm.get('username').valid &&
+            	 signupForm.get('username').touched">
+    </span>
+
+</div>
+
+<!--.get keyword can not be used if you are accessing form control outside its divs-->
+~~~
+
+## Grouping the FormControls 
+
+~~~typescript
+// app.component.ts
+ ngOnInit(){ 
+    this.signupForm = new FormGroup({
+       'userData': new FormGroup({
+             'username':new FormControl(null, Validators.required),
+             'email' : new FormControl(null, [Validators.required, Validators.email])
+              }),
+       'gender' : new FormControl('male'),
+       'hobbies' : new FormArray([])
+    });
+ }
+
+// userData is grouped form control and holds username and email
+~~~
+
+~~~html
+<!--app.component.html-->
+<form>
+    <div formGroupName="userData">
+             <label for="username">Username</label>
+     		<input ...>
+    
+    		<!--access in individual form control-->
+			<span *ngIf="!signupForm.get('userData.username').valid &&
+            	 		 signupForm.get('userData.username').touched">
+    		</span>
+    </div>
+</form>
+~~~
+
+
+
+
+
+
+
+
