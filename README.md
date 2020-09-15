@@ -3,7 +3,7 @@
 ## Table of Contents
 * [Introduction](#Introduction)<br>
 * [Setup](#Setup)<br>
-* [Adding Form Control](#Adding-For-Control)<br>
+* [Adding Form Control](#Adding-Form-Control)<br>
 * [Connecting Above Created FormControl to The HTML Template](#Connecting-Above-Created-FormControl-to-The-HTML-Template)<br>
 * [Submit The Form](#Submit-The-Form)<br>
 * [Validating The Input Data](#Validating-The-Input-Data)<br>
