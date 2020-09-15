@@ -4,7 +4,7 @@
 * [Introduction](#Introduction)<br>
 * [Setup](#Setup)<br>
 * [Adding Form Control](#Adding-For-Control)<br>
-* [Connecting Above Created FormControl to The HTML Template](#Connecting-Above-Created FormControl-to-The-HTML-Template)<br>
+* [Connecting Above Created FormControl to The HTML Template](#Connecting-Above-Created-FormControl-to-The-HTML-Template)<br>
 * [Submit The Form](#Submit-The-Form)<br>
 * [Validating The Input Data](#Validating-The-Input-Data)<br>
 * [Getting Access to Controls](#Getting-Access-to-Controls)<br>
