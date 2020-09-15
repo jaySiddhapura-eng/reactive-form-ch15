@@ -12,10 +12,14 @@
 
 ## Introduction
 
+## 	[:arrow_up:](#Table-of-Contents )<br>
+
 1. In template drive n approach of form implementation, we first created the form template and then we connect that template to the typescript object and code
 2. In Reactive form implementation we first create form object in typescript and then we uses this form to create template in HTML 
 
 ## Setup
+
+## 	[:arrow_up:](#Table-of-Contents )<br>
 
 1. Import the ```FormGroup``` in the ```app.component.ts```
 
@@ -37,6 +41,8 @@
 
 ## Adding Form Control
 
+## 	[:arrow_up:](#Table-of-Contents )<br>
+
 ~~~typescript
 //app.component.ts
 
@@ -54,6 +60,8 @@ export class AppComponent {
 ~~~
 
 ## Connecting Above Created FormControl to The HTML Template
+
+## 	[:arrow_up:](#Table-of-Contents )<br>
 
 ~~~html
 <form [formGroup]="signupForm">
@@ -88,6 +96,8 @@ export class AppComponent {
 
 ## Submit The Form
 
+## 	[:arrow_up:](#Table-of-Contents )<br>
+
 1. Technically form is already submitted and .ts has all the form control inputs already
 
    ~~~html
@@ -106,6 +116,8 @@ export class AppComponent {
    ~~~
 
 ## Validating The Input Data
+
+## 	[:arrow_up:](#Table-of-Contents )<br>
 
 1. FormControl support some default validators
 
@@ -131,6 +143,8 @@ export class AppComponent {
 
 ## Getting Access to Controls
 
+## 	[:arrow_up:](#Table-of-Contents )<br>
+
 ~~~html
 <div class="form-group">
      <label for="username">Username</label>
@@ -147,6 +161,8 @@ export class AppComponent {
 ~~~
 
 ## Grouping The FormControls 
+
+## 	[:arrow_up:](#Table-of-Contents )<br>
 
 ~~~typescript
 // app.component.ts
