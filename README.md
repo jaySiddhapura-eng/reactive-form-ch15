@@ -1,5 +1,15 @@
 # Reactive Forms
 
+## Table of Contents
+* [Introduction](#Introduction)<br>
+* [Setup](#Setup)<br>
+* [Adding Form Control](#Adding-For-Control)<br>
+* [Connecting Above Created FormControl to The HTML Template](#Connecting-Above-Created FormControl-to-The-HTML-Template)<br>
+* [Submit The Form](#Submit-The-Form)<br>
+* [Validating The Input Data](#Validating-The-Input-Data)<br>
+* [Getting Access to Controls](#Getting-Access-to-Controls)<br>
+* [Grouping The FormControls](#Grouping-The-FormControls)<br>
+
 ## Introduction
 
 1. In template drive n approach of form implementation, we first created the form template and then we connect that template to the typescript object and code
@@ -43,7 +53,7 @@ export class AppComponent {
 }
 ~~~
 
-## Connecting above created FormControl to the HTML template
+## Connecting Above Created FormControl to The HTML Template
 
 ~~~html
 <form [formGroup]="signupForm">
@@ -76,7 +86,7 @@ export class AppComponent {
 </form>
 ~~~
 
-## Submit the form
+## Submit The Form
 
 1. Technically form is already submitted and .ts has all the form control inputs already
 
@@ -95,7 +105,7 @@ export class AppComponent {
    }  
    ~~~
 
-## Validating the input Data
+## Validating The Input Data
 
 1. FormControl support some default validators
 
@@ -119,7 +129,7 @@ export class AppComponent {
    }
    ~~~
 
-## Getting access to controls
+## Getting Access to Controls
 
 ~~~html
 <div class="form-group">
@@ -136,7 +146,7 @@ export class AppComponent {
 <!--.get keyword can not be used if you are accessing form control outside its divs-->
 ~~~
 
-## Grouping the FormControls 
+## Grouping The FormControls 
 
 ~~~typescript
 // app.component.ts
